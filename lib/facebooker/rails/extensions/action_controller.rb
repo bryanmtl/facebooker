@@ -2,7 +2,7 @@ module ::ActionController
   class Base
     def self.inherited_with_facebooker(subclass)
       inherited_without_facebooker(subclass)
-      if subclass.to_s == "ApplicationController"
+      if subclass.to_s == "Spree::BaseController" or subclass.to_s == "ApplicationController"
         subclass.send(:include,Facebooker::Rails::Controller) 
         subclass.helper Facebooker::Rails::Helpers
       end
